@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="sidebar-item">
+    <div class="sidebar-title">
+        {sidebar.data.title}
+    </div>
+    <f:if condition="{gpContact} == 'true' && {sidebar.data.uid} == '5'">
+        <f:then>
+            <div class="sidebar-content active">
+                Die Nachricht wurde erfolgreich verschickt
+            </div>
+        </f:then>
+        <f:else>
+            <div class="sidebar-content">
+                <f:cObject typoscriptObjectPath="lib.sidebarcontent" data="{sidebar.data}"></f:cObject>
+            </div>
+        </f:else>
+    </f:if>
+</div>

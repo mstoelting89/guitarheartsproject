@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ghp/Resources/Private/Language/locallang_db" date="2021-01-24T17:30:33Z" product-name="ghp">
+		<header/>
+		<body>
+			<trans-unit id="tx_ghp_domain_model_guitarheartsproject" resname="tx_ghp_domain_model_guitarheartsproject">
+				<source>Guitar Hearts Project</source>
+			</trans-unit>
+			<trans-unit id="tx_ghp_domain_model_guitarheartsproject.titel" resname="tx_ghp_domain_model_guitarheartsproject.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_ghp_pi.name" resname="tx_ghp_pi.name">
+				<source>GuitarHearsProject</source>
+			</trans-unit>
+			<trans-unit id="tx_ghp_pi.description" resname="tx_ghp_pi.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div id="footer-partner-carousel">
+    <f:for each="{files}" as="file" iteration="iter">
+        <div class="carousel-cell">
+            <f:link.external uri="{file.link}" target="_blank">
+                <f:media class="image-embed-item" file="{file}" height="150" width="auto"></f:media>
+            </f:link.external>
+        </div>
+    </f:for>
+</div>

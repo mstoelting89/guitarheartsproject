@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:switch expression="{data.space_before_class}">
+    <f:case value="">
+        <div class="row ghp-mt-0"></div>
+    </f:case>
+    <f:case value="extra-small">
+        <div class="row ghp-mt-1"></div>
+    </f:case>
+    <f:case value="small">
+        <div class="row ghp-mt-2"></div>
+    </f:case>
+    <f:case value="medium">
+        <div class="row ghp-mt-3"></div>
+    </f:case>
+    <f:case value="large">
+        <div class="row ghp-mt-4"></div>
+    </f:case>
+    <f:case value="extra-large">
+        <div class="row ghp-mt-5"></div>
+    </f:case>
+</f:switch>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-4 flex align-self-center">
+        <div class="firstWord">{data.header->f:format.raw()}</div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-8">
+
+        {data.bodytext->f:format.raw()}
+    </div>
+</div>
+<f:switch expression="{data.space_after_class}">
+    <f:case value="">
+        <div class="row ghp-mb-0"></div>
+    </f:case>
+    <f:case value="extra-small">
+        <div class="row ghp-mb-1"></div>
+    </f:case>
+    <f:case value="small">
+        <div class="row ghp-mb-2"></div>
+    </f:case>
+    <f:case value="medium">
+        <div class="row ghp-mb-3"></div>
+    </f:case>
+    <f:case value="large">
+        <div class="row ghp-mb-4"></div>
+    </f:case>
+    <f:case value="extra-large">
+        <div class="row ghp-mb-5"></div>
+    </f:case>
+</f:switch>

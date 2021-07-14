@@ -1,0 +1,7 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="sidebars">
+    <f:for each="{sidebars}" as="sidebaritem">
+        <f:render partial="Nav/Sitebaritem" arguments="{sidebar:sidebaritem, gpContact: gpContact}"></f:render>
+    </f:for>
+</div>

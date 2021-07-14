@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="Main">
+
+    <f:for each="{data.tx_gridelements_view_children}" as="child" iteration="iter">
+        <div class="section" style="margin-top: 15px; margin-bottom: 15px;">
+            <div id="c{child.uid}" style="position: absolute; margin-top: -110px;"></div>
+            <div class="container">
+                <div class="faq-topics" id="faq-template">
+                    <f:cObject typoscriptObjectPath="lib.renderCObj">{child.uid}</f:cObject>
+                </div><!-- / .row -->
+            </div>
+        </div>
+    </f:for>
+</f:section>
+</html>

@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+    <div class="carousel-cell">
+        <div class="card-image-ghp">
+            <f:if condition="{files.0}">
+                <f:media class="image-embed-item" file="{files.0}"></f:media>
+            </f:if>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{data.header}</h4>
+            <p class="card-text">{data.flexform_content}</p>
+        </div>
+    </div>
+
+</html>

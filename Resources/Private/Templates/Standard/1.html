@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <div class="section" style="margin-top: 15px; margin-bottom: 60px;">
+        <div class="container">
+            <div class="firstWord carousel-header">{data.header}</div>
+            <div class="main-carousel" data-flickity='{ "wrapAround": true }'>
+                <f:for each="{children}" as="child" iteration="iter">
+                    <f:render partial="Child"
+                              arguments="{data: child.data, children: child.children, options: options, settings: settings}"/>
+                </f:for>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

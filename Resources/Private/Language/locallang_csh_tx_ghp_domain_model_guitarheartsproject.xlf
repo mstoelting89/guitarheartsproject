@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ghp/Resources/Private/Language/locallang_csh" date="2021-01-24T17:30:33Z" product-name="ghp">
+		<header/>
+		<body>
+			<trans-unit id="titel.description" resname="titel.description">
+				<source>titel</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

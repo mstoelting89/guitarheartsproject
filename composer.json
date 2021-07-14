@@ -1,0 +1,22 @@
+{
+    "name": "mst/ghp",
+    "type": "typo3-cms-extension",
+    "description": "Extension des Guitar Hearts Projects",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^10.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mst\\Ghp\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mst\\Ghp\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/ghp": "self.version"
+    }
+}

@@ -1,0 +1,438 @@
+# Allgemeine Konfiguration
+config {
+  # Neuer Parameter L wird in URL eingebaut
+  linkVars = L
+  # darf nur einmal in der URL vorkommen
+  uniqueLinkVars = 1
+  # Defaultwert ist 0
+  sys_language_uid = 0
+  # Auswahl Sprache
+  htmlTag_setParams = lang="de"
+  language = de
+  # Uhrzeit wird auf Sprache eingestellt
+  locale_all = de_DE
+  # Suchindizierung aktivieren
+  index_enable = 1
+  # Indizierung auf externe Medien erweitern
+  index_externals = 1
+
+  contentObjectExceptionHandler = 0
+}
+
+# Default PAGE object:
+page = PAGE
+
+page {
+
+  # Meta Tags
+  page.config.doctype = html5
+  meta.author = Michael Stoelting
+  meta.description = Dies ist die Webseite des Guitar Hearts Project
+  meta.viewport = width=device-width, initial-scale=1
+  meta.language = de
+  meta.lang = de
+
+  # Einbindung CSS
+  includeCSS {
+    bootstrap = EXT:ghp/Resources/Public/vendors/bootstrap/dist/css/bootstrap.css
+    //bootstrap = fileadmin/vendors/bootstrap/css/bootstrap.css
+    fontawesome = EXT:ghp/Resources/Public/vendors/fortawesome/css/all.min.css
+    flickity = EXT:ghp/Resources/Public/vendors/flickity/flickity.css
+    main = EXT:ghp/Resources/Public/css/style.css
+  }
+
+  # Einbindung JS
+  includeJS {
+    jquery = EXT:ghp/Resources/Public/vendors/jquery/dist/jquery.min.js
+    main = EXT:ghp/Resources/Public/js/custom.js
+    bootstrapJS = EXT:ghp/Resources/Public/vendors/bootstrap/dist/js/bootstrap.bundle.js
+    flickity = EXT:ghp/Resources/Public/vendors/flickity/flickity.pkgd.js
+    //bootstrapJS = fileadmin/vendors/bootstrap/js/bootstrap.js
+    fontawesomeJS = EXT:ghp/Resources/Public/vendors/fortawesome/js/all.min.js
+  }
+
+  headerData {
+    10 = IMAGE
+    10 {
+      file {
+        import = 1
+        import {
+
+          # Import der Daten aus der Templatedatei
+          data = levelmedia:-1,slide
+
+          # Auswahl erstes Angezeigtes Bild
+          listNum = 0
+        }
+
+
+        treatIdAsReference = 1
+        width = 1920
+      }
+
+      # Einbindung der CSS-Klasse mit dem Hintergrundbild in den Header
+      layoutKey = cssbg
+      layout {
+        cssbg {
+          # SRC ist das Attribut src des img tags welches vorher eingebunden wurde
+          element = <style type="text/css">.header-bg-image { background-image: url(###SRC###); }</style>
+        }
+      }
+    }
+
+    #20 = TEXT
+    #20.value(<!-- Global site tag (gtag.js) - Google Analytics -->
+    #          <script async src="https://www.googletagmanager.com/gtag/js?id=G-EY07RDV4GZ"></script>
+    #          <script>
+    #            window.dataLayer = window.dataLayer || [];
+    #            function gtag(){dataLayer.push(arguments);}
+    #            gtag('js', new Date());
+    #            gtag('config', 'G-EY07RDV4GZ');
+    #            </script>
+    #)
+  }
+
+  # Inititalisierung des Fluid-Templates
+  10 = FLUIDTEMPLATE
+  10 {
+
+    # Template-Datei wird eingebunden
+    templateName = MainTemplate
+    partialRootPaths {
+      10 = EXT:ghp/Resources/Private/Partials/
+    }
+    templateRootPaths {
+      10 = EXT:ghp/Resources/Private/Templates/
+    }
+    layoutRootPaths {
+      10 = EXT:ghp/Resources/Private/Layouts/
+    }
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      10 {
+        special = directory
+        special.value = 4
+        as = sidebars
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      20 {
+        folders = 1:images/partner/
+        folders.recursive = 1
+        as = partners
+      }
+
+    }
+
+    variables {
+      # Einbindung fixes Logo
+      logo = IMAGE
+      logo.file = fileadmin/images/BilderLars/1548x1026.png
+
+      logoScroll = IMAGE
+      logoScroll.file = fileadmin/images/BilderLars/ghp_text_white.png
+      logoScroll.file.width = 200px;
+
+      # Einbindung Navbar
+      menuPrimary = HMENU
+      menuPrimary {
+
+        # Ordner Struktur als Vorgabe (alle Unterseiten von ID=2 werden als Menü dargestellt)
+        special = directory
+        special.value = 3
+
+        # ul-tag kommt um das Menü herum
+        wrap = <ul class="navbar-nav mt-2 mt-lg-0">|</ul>
+
+        # Darstellung des Menüs
+        1 = TMENU
+        1 {
+
+          #Untermenü-Ebene wird immer angezeigt
+          expAll = 1
+
+          # NO(rmale) Darstellung
+          NO = 1
+          NO {
+            # umschließung des Menü-Eintrags mit einem li-tag
+            wrapItemAndSub = <li class="nav-item nav-link">|</li>
+          }
+
+          # ACT(ive) hat gleiche Eigenschaften wie NO
+          ACT < .NO
+          ACT {
+            wrapItemAndSub = <li class="nav-item nav-link active">|</li>
+          }
+        }
+
+        # Einbindung Untermenü
+        2 < .1
+        2 {
+          wrap = <ul class="dropdown-menu">|</ul>
+        }
+      }
+
+
+      footerSecondaryMenu = HMENU
+      footerSecondaryMenu {
+        special = directory
+        special.value = 10
+        wrap = <ul class="secondary-menu-list">|</ul>
+        1 = TMENU
+        1 {
+          expAll = 1
+          NO = 1
+          NO {
+            wrapItemAndSub = <li class="sec-nav-item">|</li>
+          }
+        }
+      }
+
+      contentTrailer = CONTENT
+      contentTrailer {
+        table = tt_content
+        select.orderBy = sorting
+        select.where = colPos=5
+      }
+
+      spenden = COA
+      spenden {
+        10 < styles.content.get
+        10.select.where = colPos = 0
+        10.select.pidInList = 6
+      }
+
+      # Einbindung der Sidebars
+      bewerben = COA
+      bewerben {
+        10 < styles.content.get
+        10.select.where = colPos = 0
+        10.select.pidInList = 5
+
+        20 = TEXT
+        20.data = DB:pages:5:title
+      }
+
+      bewerbenContent = CONTENT
+      bewerbenContent {
+        10 = TEXT
+        table = tt_content
+        select {
+          pidInList = 5
+        }
+
+        renderObj = COA
+        renderObj {
+          10 = TEXT
+          10.stdWrap.field = bodytext
+        }
+
+      }
+
+      spendenContent = CONTENT
+      spendenContent {
+        table = tt_content
+        select {
+          pidInList = 6
+        }
+
+        renderObj = COA
+        renderObj {
+          10 = TEXT
+          10.stdWrap.field = bodytext
+        }
+      }
+
+      partners_three = CONTENT
+      partners_three {
+        table = tt_content
+        select {
+          pidInList = 18
+        }
+      }
+
+      gpContact = TEXT
+      gpContact {
+        stdWrap.data = GP:finish
+      }
+
+      ankermenue = CONTENT
+      ankermenue {
+        table = tt_content
+        wrap = <ul>|</ul>
+        select {
+          pidInList = this
+          orderBy = sorting
+          where = colPos=0
+          languageField=sys_language_uid
+        }
+        renderObj = TEXT
+        renderObj {
+          wrap = <li>|</li>
+          field = header
+          typolink.parameter.field = pid
+          typolink.parameter.dataWrap = |#{field:uid}
+          if.isTrue.field=header
+        }
+      }
+
+
+      contentMain = CONTENT
+      contentMain < styles.content.get
+
+      footerLabel = TEXT
+      footerLabel.value = The Guitar Hearts Project e.V. <br>guitarheartsproject@outlook.de <br>067719344061 <br>Langgasse 17, 56348 Bornich, Germany <br><br>©2020 The Guitar Hearts Project e.V.
+
+    }
+  }
+
+}
+
+plugin.tx_ghp_pi {
+    view {
+        templateRootPaths.0 = EXT:ghp/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_ghp_pi.view.templateRootPath}
+        partialRootPaths.0 = EXT:ghp/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_ghp_pi.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ghp/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_ghp_pi.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_ghp_pi.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+
+lib.contentElement {
+  partialRootPaths {
+    10 = EXT:ghp/Resources/Private/Partials/
+  }
+  templateRootPaths {
+    10 = EXT:ghp/Resources/Private/Templates/
+  }
+}
+
+lib.sidebarcontent = COA
+lib.sidebarcontent {
+
+  10 = CONTENT
+  10 {
+    table = tt_content
+    select.pidInList = {field:uid}
+    select.pidInList.insertData = 1
+  }
+  renderObj = TEXT
+  renderObj.field = bodytext
+
+}
+
+# these classes are only used in auto-generated templates
+plugin.tx_ghp._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    input.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    .tx-ghp table {
+        border-collapse:separate;
+        border-spacing:10px;
+    }
+
+    .tx-ghp table th {
+        font-weight:bold;
+    }
+
+    .tx-ghp table td {
+        vertical-align:top;
+    }
+
+    .typo3-messages .message-error {
+        color:red;
+    }
+
+    .typo3-messages .message-ok {
+        color:green;
+    }
+)
+
+tt_content {
+  sideHeaderContent =< lib.contentElement
+  sideHeaderContent {
+    templateName = SideHeaderContent
+  }
+
+  ghp_info_card =< lib.contentElement
+  ghp_info_card {
+      templateName = Ghp_info_card
+      dataProcessing {
+          10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+          10 {
+              references.fieldName = image
+          }
+
+          20 = TYPO3\CMS\Frontend\DataProcessing\GalleryProcessor
+          20 {
+              maxGalleryWidth = {$styles.content.ghp_info_card.maxW}
+              maxGalleryWidthInText = {$styles.content.ghp_info_card.maxWInText}
+              columnSpacing = {$styles.content.ghp_info_card.columnSpacing}
+              borderWidth = {$styles.content.ghp_info_card.borderWidth}
+              borderPadding = {$styles.content.ghp_info_card.borderPadding}
+          }
+
+        }
+
+        stdWrap {
+            editIcons = tt_content: header [header_layout], bodytext, image [imageorient|imagewidth|imageheight], [imagecols|imageborder], image_zoom
+            editIcons {
+                iconTitle.data = LLL:EXT:fluid_styled_content/Resources/Private/Language/FrontendEditing.xlf:editIcon.textpic
+
+          }
+      }
+  }
+
+  carousel =< lib.contentElement
+  carousel {
+    templateName = carousel
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        references.fieldName = image
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\GalleryProcessor
+      20 {
+        maxGalleryWidth = {$styles.content.ghp_info_card.maxW}
+        maxGalleryWidthInText = {$styles.content.ghp_info_card.maxWInText}
+        columnSpacing = {$styles.content.ghp_info_card.columnSpacing}
+        borderWidth = {$styles.content.ghp_info_card.borderWidth}
+        borderPadding = {$styles.content.ghp_info_card.borderPadding}
+      }
+
+    }
+
+    stdWrap {
+      editIcons = tt_content: header [header_layout], bodytext, image [imageorient|imagewidth|imageheight], [imagecols|imageborder], image_zoom
+      editIcons {
+        iconTitle.data = LLL:EXT:fluid_styled_content/Resources/Private/Language/FrontendEditing.xlf:editIcon.textpic
+
+      }
+    }
+  }
+}
+

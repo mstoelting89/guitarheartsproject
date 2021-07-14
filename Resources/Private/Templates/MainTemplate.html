@@ -1,0 +1,81 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true" lang="de">
+
+<f:layout name="Default" />
+
+<f:section name="Header">
+    <header>
+        <f:if condition="{data.uid} == 7 || {data.uid} == 8 || {data.uid} == 9 || {data.uid} == 11 || {data.uid} == 12 || {data.uid} == 15">
+            <f:then>
+                <div class="header-content-subpage header-bg-image">
+                    <f:render partial="Nav/Navbar" arguments="{_all}"></f:render>
+                    <div class="row header-title-subpage align-items-center">
+                        <div class="col-4 col-md-4 col-lg-4 logo-align">
+                            {logo -> f:format.raw()}
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8">
+                            {contentTrailer -> f:format.raw()}
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="header-content header-bg-image">
+                    <f:render partial="Nav/Navbar" arguments="{_all}"></f:render>
+                    <div class="row header-title align-items-center">
+                        <div class="col-4 col-md-4 col-lg-4 logo-align">
+                            {logo -> f:format.raw()}
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8">
+                            {contentTrailer -> f:format.raw()}
+                        </div>
+                    </div>
+                </div>
+            </f:else>
+
+        </f:if>
+    </header>
+
+</f:section>
+
+<f:section name="Main">
+    <main>
+        <div class="social-media-links" >
+            <a href="https://www.facebook.com/guitarheartsprojecteV" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/guitarheartsproject/?utm_medium=copy_link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="col-md-11 content-main">
+            {contentMain -> f:format.raw()}
+        </div>
+
+    </main>
+
+</f:section>
+
+<f:section name="Footer">
+    <footer>
+            <div class="col-lg-4 col-xs-3 sub-text-footer pt-3 pb-3">
+                {footerLabel -> f:format.raw()}
+            </div>
+
+            <div class="col-lg-6 col-xs-3 partners">
+                {partners_three -> f:format.raw()}
+            </div>
+
+            <div class="col-lg-2 col-xs-3 secondary-menu">
+                {footerSecondaryMenu -> f:format.raw()}
+            </div>
+
+
+    </footer>
+
+</f:section>
+
+
+
+</html>

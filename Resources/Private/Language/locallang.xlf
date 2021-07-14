@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ghp/Resources/Private/Language/locallang" date="2021-01-24T17:30:33Z" product-name="ghp">
+		<header/>
+		<body>
+			<trans-unit id="tx_ghp_domain_model_guitarheartsproject" resname="tx_ghp_domain_model_guitarheartsproject">
+				<source>Guitar Hearts Project</source>
+			</trans-unit>
+			<trans-unit id="tx_ghp_domain_model_guitarheartsproject.titel" resname="tx_ghp_domain_model_guitarheartsproject.titel">
+				<source>Titel</source>
+			</trans-unit>
+
+			<trans-unit id="sideHeaderContent_title" resname="sideHeaderContent_title">
+				<source>Side Header Content</source>
+			</trans-unit>
+			<trans-unit id="sideHeaderContent_description" resname="sideHeaderContent_description">
+				<source>Inhalt mit Titel an der Seite</source>
+			</trans-unit>
+
+			<trans-unit id="ghp_info_card_title" resname="ghp_info_card_title">
+				<source>Info Card</source>
+			</trans-unit>
+			<trans-unit id="ghp_info_card_description" resname="ghp_info_card_description">
+				<source>Inhaltselement für eine Info Card</source>
+			</trans-unit>
+
+			<trans-unit id="carousel_title" resname="carousel_title">
+				<source>Carousel</source>
+			</trans-unit>
+			<trans-unit id="carousel_description" resname="carousel_description">
+				<source>Element mit mehreren Text Bild Elementen</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

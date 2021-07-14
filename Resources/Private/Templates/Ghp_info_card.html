@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:switch expression="{data.space_before_class}">
+    <f:case value="">
+        <div class="row ghp-mt-0"></div>
+    </f:case>
+    <f:case value="extra-small">
+        <div class="row ghp-mt-1"></div>
+    </f:case>
+    <f:case value="small">
+        <div class="row ghp-mt-2"></div>
+    </f:case>
+    <f:case value="medium">
+        <div class="row ghp-mt-3"></div>
+    </f:case>
+    <f:case value="large">
+        <div class="row ghp-mt-4"></div>
+    </f:case>
+    <f:case value="extra-large">
+        <div class="row ghp-mt-5"></div>
+    </f:case>
+</f:switch>
+<div class="info-items">
+    <div class="image-info-card">
+        <f:if condition="{files.0}">
+            <f:media class="image-embed-item" file="{files.0}"></f:media>
+        </f:if>
+    </div>
+</div>
+
+<div class="ghp-mt-25 info-card-header">
+    <f:render partial="Header/All" arguments="{_all}" />
+</div>
+
+
+<div class="ghp-mt-25">
+    {data.bodytext->f:format.raw()}
+</div>
+
+<f:switch expression="{data.space_after_class}">
+    <f:case value="">
+        <div class="row ghp-mb-0"></div>
+    </f:case>
+    <f:case value="extra-small">
+        <div class="row ghp-mb-1"></div>
+    </f:case>
+    <f:case value="small">
+        <div class="row ghp-mb-2"></div>
+    </f:case>
+    <f:case value="medium">
+        <div class="row ghp-mb-3"></div>
+    </f:case>
+    <f:case value="large">
+        <div class="row ghp-mb-4"></div>
+    </f:case>
+    <f:case value="extra-large">
+        <div class="row ghp-mb-5"></div>
+    </f:case>
+</f:switch>
+
