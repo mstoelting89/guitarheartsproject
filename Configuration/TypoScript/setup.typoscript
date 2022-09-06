@@ -281,7 +281,7 @@ page {
       contentMain < styles.content.get
 
       footerLabel = TEXT
-      footerLabel.value = The Guitar Hearts Project e.V. <br>guitarheartsproject@outlook.de <br>Langgasse 17, 56348 Bornich, Germany <br><br>©2020 The Guitar Hearts Project e.V.
+      footerLabel.value = The Guitar Hearts Project e.V. <br>vorstand@guitarheartsproject.de <br>Langgasse 17, 56348 Bornich, Germany <br><br>©2020 The Guitar Hearts Project e.V.
 
     }
   }
