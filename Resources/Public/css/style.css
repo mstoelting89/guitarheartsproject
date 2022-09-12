@@ -44,6 +44,18 @@ body {
     border-radius: 50%;;
 }
 
+.fa-whatsapp {
+    background: #25D366;
+    color: white;
+    font-size: 4rem;
+    width: 4rem!important;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
 /*************************************/
 /*          Header / Navbar          */
 /*************************************/
